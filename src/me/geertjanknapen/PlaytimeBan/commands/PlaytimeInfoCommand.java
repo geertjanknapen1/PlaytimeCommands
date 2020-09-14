@@ -37,6 +37,7 @@ public class PlaytimeInfoCommand implements CommandExecutor {
 			Instant date = Instant.ofEpochMilli(p.getFirstPlayed());
 			LocalDateTime utc = LocalDateTime.ofInstant(date, ZoneOffset.UTC);
 			p.sendMessage("Je speelt al sinds: " + utc);
+			return false;
 		}
 		
 		return false;
