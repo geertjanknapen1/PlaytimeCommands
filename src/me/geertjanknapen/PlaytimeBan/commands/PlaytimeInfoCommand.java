@@ -8,6 +8,7 @@ import java.time.ZoneOffset;
 import java.util.HashMap;
 import java.util.UUID;
 
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -19,21 +20,6 @@ import org.bukkit.event.player.PlayerQuitEvent;
 public class PlaytimeInfoCommand implements CommandExecutor {
 	@SuppressWarnings("unused")
 	private Main plugin;
-	private long t;
-	
-	HashMap<UUID, Long> time = new HashMap<UUID, Long>();
-	
-	@EventHandler
-	public void onLogin(PlayerLoginEvent event) {
-		time.put(event.getPlayer().getUniqueId(), System.currentTimeMillis());
-	}
-	
-	@EventHandler
-	public void onLeave(PlayerQuitEvent event) {
-		Player p = event.getPlayer();
-		t = System.currentTimeMillis() - time.get(p.getUniqueId());
-		
-	}
 	
 	public PlaytimeInfoCommand(Main plugin) {
 		this.plugin = plugin;
@@ -49,31 +35,16 @@ public class PlaytimeInfoCommand implements CommandExecutor {
 		
 		Player p = (Player) sender;
 		
-		String timePlayed = convertMapWithIteration(time);
-		
 		if (cmd.getName().equalsIgnoreCase("playtimeinfo")) {
 			// Do command stuff
-			p.sendMessage("Hey daar " + p.getName() + "!");
+			p.sendMessage(ChatColor.YELLOW + "Hey daar " + ChatColor.DARK_PURPLE + p.getName() + ChatColor.YELLOW + "!");
 			
 			// Played since is p.getFirstPlayed();
 			Instant date = Instant.ofEpochMilli(p.getFirstPlayed());
 			LocalDateTime localtime = LocalDateTime.ofInstant(date, ZoneOffset.systemDefault());
-			p.sendMessage("Je speelt al sinds: " + localtime);
-			
-			p.sendMessage(timePlayed);
-			return false;
+			p.sendMessage(ChatColor.YELLOW + "Je speelt al sinds: " + ChatColor.DARK_PURPLE + localtime + ChatColor.YELLOW + " op deze server.");
 		}
 		
 		return false;
 	}
-	
-	public String convertMapWithIteration(HashMap<UUID, Long> map) {
-		StringBuilder mapAsString = new StringBuilder("{");
-		for (UUID key : map.keySet()) {
-			mapAsString.append(key + "=" + map.get(key) + ", ");
-		}
-		mapAsString.delete(mapAsString.length()-2, mapAsString.length()).append("}");
-		return mapAsString.toString();
-	}
-
 }
