@@ -1,0 +1,10 @@
+name: PlaytimeCommands 
+version: 1.0
+author: Geert-Jan Knapen
+main: me.geertjanknapen.PlaytimeBan.Main
+description: Simple plugin to have fun with playtime commands!
+
+commands:
+  playtimeinfo:
+    aliases: [ptinfo]
+    description: This command checks the time since this player first started playing!
