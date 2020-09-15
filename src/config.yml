@@ -1,0 +1,5 @@
+firstJoin_message: '&6Wow, &5<player> &6is zojuist voor het eerst gejoined!'
+
+join_message: '&6Kijk, &5<player> &6is ook weer aanwezig!'
+
+leave_message: '&6Helaas, &5<player> &6 heeft de server verlaten.'
