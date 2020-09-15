@@ -1,6 +1,7 @@
 package me.geertjanknapen.PlaytimeBan.commands;
 
 import me.geertjanknapen.PlaytimeBan.Main;
+import utils.Utils;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -36,13 +37,15 @@ public class PlaytimeInfoCommand implements CommandExecutor {
 		Player p = (Player) sender;
 		
 		if (cmd.getName().equalsIgnoreCase("playtimeinfo")) {
-			// Do command stuff
-			p.sendMessage(ChatColor.YELLOW + "Hey daar " + ChatColor.DARK_PURPLE + p.getName() + ChatColor.YELLOW + "!");
+			// not using utils
+			//p.sendMessage(ChatColor.YELLOW + "Hey daar " + ChatColor.DARK_PURPLE + p.getName() + ChatColor.YELLOW + "!");
+			// using utils
+			p.sendMessage(Utils.chat("&6 Hey daar &5" + p.getName() + "&6!"));
 			
 			// Played since is p.getFirstPlayed();
 			Instant date = Instant.ofEpochMilli(p.getFirstPlayed());
 			LocalDateTime localtime = LocalDateTime.ofInstant(date, ZoneOffset.systemDefault());
-			p.sendMessage(ChatColor.YELLOW + "Je speelt al sinds: " + ChatColor.DARK_PURPLE + localtime + ChatColor.YELLOW + " op deze server.");
+			p.sendMessage(Utils.chat("&6 Je speelt al sinds &5" + localtime + " &6 op deze server."));
 		}
 		
 		return false;
