@@ -3,3 +3,8 @@ firstJoin_message: '&6Wow, &5<player> &6is zojuist voor het eerst gejoined!'
 join_message: '&6Kijk, &5<player> &6is ook weer aanwezig!'
 
 leave_message: '&6Helaas, &5<player> &6 heeft de server verlaten.'
+
+motd_0: '&c&bSpigot 1.16.2 &d&bPlugin Development!'
+motd_1: '&aSpigot 1.16.2 &6Plugin Test Server'
+motd_2: '&5Geert-Jans Plugin Test Paradijs!'
+motd_3: '&c&bPlugins?! &d&bWe got them!'
